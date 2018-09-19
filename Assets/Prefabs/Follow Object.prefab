@@ -127,3 +127,4 @@ MonoBehaviour:
   objectToFollow: {fileID: 0}
   followSpeed: 0.1
   maxDistanceToFollow: 20
+  minFollowDistance: 1

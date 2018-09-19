@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public GameObject objectToFollow;
-    public float followSpeed, maxDistanceToFollow;
+    public SphereCollider objectToFollow;
+    public float followSpeed, maxDistanceToFollow, minFollowDistance;
 
     private bool isFollowing;
 
@@ -16,9 +16,9 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
-        if (isFollowing)
+        if (isFollowing && Vector3.Distance(transform.position, objectToFollow.transform.position) > minFollowDistance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, objectToFollow.transform.position, followSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, objectToFollow.ClosestPoint(transform.position), followSpeed);
         }
     }
 

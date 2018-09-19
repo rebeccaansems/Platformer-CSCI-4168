@@ -265,6 +265,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 457942204}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &498686774 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 135999959277999102, guid: 16a71d34f405c014cb3254c1871d1e2b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1990893252}
 --- !u!1 &599781094
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +517,7 @@ Prefab:
         type: 2}
       propertyPath: objectToFollow
       value: 
-      objectReference: {fileID: 1990893253}
+      objectReference: {fileID: 498686774}
     - target: {fileID: 1040899597697402, guid: 62aa40e3ca1324a4ead92a240e95cfbe, type: 2}
       propertyPath: m_Name
       value: Cube
@@ -570,11 +575,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a71d34f405c014cb3254c1871d1e2b, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1990893253 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1983892524124392, guid: 16a71d34f405c014cb3254c1871d1e2b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1990893252}
 --- !u!1 &2033552652
 GameObject:
   m_ObjectHideFlags: 0
