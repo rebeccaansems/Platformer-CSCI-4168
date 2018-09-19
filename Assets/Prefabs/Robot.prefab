@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 23737627180384242}
   - component: {fileID: 136242248977822032}
   - component: {fileID: 54173606183047342}
+  - component: {fileID: 114216166259123238}
   - component: {fileID: 114764641918310374}
   m_Layer: 0
   m_Name: Robot
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347166935931560}
   m_LocalRotation: {x: 0.119703665, y: 0, z: 0, w: 0.9928097}
-  m_LocalPosition: {x: 0, y: 1.63, z: -2.29}
+  m_LocalPosition: {x: 0, y: 2.01, z: -3.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4715609421294128}
@@ -274,7 +275,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!81 &81293545414100366
 AudioListener:
@@ -283,6 +284,18 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347166935931560}
   m_Enabled: 1
+--- !u!114 &114216166259123238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1983892524124392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66760879b6b5ace45b129bd491c8f33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyFollowing: []
 --- !u!114 &114764641918310374
 MonoBehaviour:
   m_ObjectHideFlags: 1
