@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed, rotateSpeed, jumpPower;
+    public Transform baseOrb;
 
     private new Rigidbody rigidbody;
-    private Vector3 movement;
+    private float groundHeight;
 
     private void Start()
     {
@@ -17,11 +18,28 @@ public class PlayerControl : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+        }
     }
 
     private void Move()
     {
-        rigidbody.velocity = transform.forward * Input.GetAxis("Vertical") * moveSpeed;
-        transform.Rotate(0, Input.GetAxis("Horizontal") * moveSpeed, 0, Space.Self);
+        rigidbody.MovePosition(transform.position + transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed);
+        transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed, 0);
+    }
+
+    private void Jump()
+    {
+        rigidbody.AddForce(0, jumpPower, 0, ForceMode.Impulse);
+    }
+
+    private bool IsGrounded()
+    {
+        RaycastHit hit = new RaycastHit();
+        Physics.Raycast(baseOrb.position, -Vector3.up, out hit);
+        return hit.distance < 0.61;
     }
 }
