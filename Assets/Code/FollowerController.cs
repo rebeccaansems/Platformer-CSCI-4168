@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MalbersAnimations;
+using System;
 
 public class FollowerController : MonoBehaviour
 {
@@ -35,9 +36,13 @@ public class FollowerController : MonoBehaviour
         }
         else if (nestLocation != null)
         {
-            controller.StopAnimal();
+            controller.OnTargetPositionArrived.AddListener(ArrivedAtNest);
+
+            player.animalsCurrentlyFollowing.Remove(controller);
+            
             controller.SetTarget(nestLocation);
-            controller.StoppingDistance = 0.2f;
+            controller.StoppingDistance = 1.7f;
+
             canFollow = false;
         }
         else
@@ -50,6 +55,13 @@ public class FollowerController : MonoBehaviour
                 player.animalsCurrentlyFollowing.Remove(controller);
             }
         }
+    }
+
+    private void ArrivedAtNest(Vector3 arg0)
+    {
+        controller.GetComponent<Animal>().GotoSleep = 1;
+        controller.GetComponent<Animal>().Tired = 100;
+        Destroy(this);
     }
 
     void OnMouseDown()
