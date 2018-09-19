@@ -124,3 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846fe0e482d47464aaa1dda4d2e3d12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToFollow: {fileID: 0}
+  followSpeed: 0.1
+  maxDistanceToFollow: 20
