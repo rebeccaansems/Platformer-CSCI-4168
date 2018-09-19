@@ -615,6 +615,10 @@ Prefab:
       propertyPath: characterController
       value: 
       objectReference: {fileID: 1701153886}
+    - target: {fileID: 1263793330893182, guid: aad3d45e99b2eaf4697bbfcc42e8cdc5, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114291878752723076, guid: aad3d45e99b2eaf4697bbfcc42e8cdc5, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: aad3d45e99b2eaf4697bbfcc42e8cdc5, type: 2}
