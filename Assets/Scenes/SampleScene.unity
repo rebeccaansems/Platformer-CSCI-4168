@@ -525,6 +525,118 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62aa40e3ca1324a4ead92a240e95cfbe, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1371483788
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 21.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 17.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.99992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.012651495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011934532890, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000012371957162, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 40028b8e62dc154408c556da49a70943, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &1843746194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000011880065980, guid: 40028b8e62dc154408c556da49a70943,
+    type: 2}
+  m_PrefabInternal: {fileID: 1371483788}
+--- !u!195 &1843746205
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1843746194}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1843746206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1843746194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4de5b350dd00334bb02dde39da7027c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoppingDistance: 0.6
+  target: {fileID: 1990893259}
+  AutoSpeed: 1
+  ToTrot: 6
+  ToRun: 8
+  debug: 0
+  OnTargetPositionArrived:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.Vector3Event, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTargetArrived:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.TransformEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnActionStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnActionEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDebug:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.StringEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  showevents: 0
 --- !u!1001 &1990893252
 Prefab:
   m_ObjectHideFlags: 0
@@ -575,6 +687,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a71d34f405c014cb3254c1871d1e2b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1990893259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4715609421294128, guid: 16a71d34f405c014cb3254c1871d1e2b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1990893252}
 --- !u!1 &2033552652
 GameObject:
   m_ObjectHideFlags: 0
