@@ -1,24 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MalbersAnimations;
 
 public class Follow : MonoBehaviour
 {
-    public SphereCollider objectToFollow;
-    public float followSpeed, maxDistanceToFollow, minFollowDistance;
+    public float maxDistanceToFollow;
+    public Transform objectToFollow;
 
     private bool isFollowing;
+    private AnimalAIControl controller;
 
     void Start()
     {
-
+        controller = this.GetComponent<AnimalAIControl>();
     }
 
     void Update()
     {
-        if (isFollowing && Vector3.Distance(transform.position, objectToFollow.transform.position) > minFollowDistance)
+        if (isFollowing)
         {
-            transform.position = Vector3.MoveTowards(transform.position, objectToFollow.ClosestPoint(transform.position), followSpeed);
+            controller.SetTarget(objectToFollow);
+        }
+        else
+        {
+            if (controller.Agent.isActiveAndEnabled && controller.Agent.isStopped == false)
+            {
+                controller.StopAnimal();
+                controller.SetDestination(transform.position);
+            }
         }
     }
 
