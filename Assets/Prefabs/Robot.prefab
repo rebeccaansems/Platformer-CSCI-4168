@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1983892524124392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 5.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4833940375496356}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66760879b6b5ace45b129bd491c8f33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentlyFollowing: []
+  animalsCurrentlyFollowing: []
 --- !u!114 &114764641918310374
 MonoBehaviour:
   m_ObjectHideFlags: 1
