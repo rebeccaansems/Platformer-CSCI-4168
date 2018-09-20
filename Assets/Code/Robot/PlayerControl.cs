@@ -19,9 +19,12 @@ public class PlayerControl : MonoBehaviour
     {
         Move();
 
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            if (IsGrounded())
+            {
+                rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            }
         }
     }
 
@@ -40,6 +43,7 @@ public class PlayerControl : MonoBehaviour
     {
         RaycastHit hit = new RaycastHit();
         Physics.Raycast(baseOrb.position, -Vector3.up, out hit);
-        return hit.distance < 0.61;
+        Debug.Log(hit.distance);
+        return hit.distance < 0.71;
     }
 }
