@@ -2568,6 +2568,7 @@ MonoBehaviour:
   rotateSpeed: 150
   jumpPower: 400
   baseOrb: {fileID: 4945299564878492}
+  topOrb: {fileID: 4561156219628390}
 --- !u!135 &135230226798218216
 SphereCollider:
   m_ObjectHideFlags: 1

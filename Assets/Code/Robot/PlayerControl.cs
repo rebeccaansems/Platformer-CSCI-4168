@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public float moveSpeed, rotateSpeed, jumpPower;
-    public Transform baseOrb;
+    public Transform baseOrb, topOrb;
 
     private new Rigidbody rigidbody;
     private Animator animator;
@@ -20,11 +20,12 @@ public class PlayerControl : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        Rotate();
         animator.SetBool("isGrounded", IsGrounded());
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            Jump();
         }
     }
 
@@ -32,36 +33,37 @@ public class PlayerControl : MonoBehaviour
     {
         currentMoveSpeed = moveSpeed;
 
-        Debug.Log(GetRaycastHit().normal + " " + GetRaycastHit().distance);
-        if (IsSlope())
+        if (IsSlope(transform.forward * Input.GetAxis("Vertical")) == false)
         {
-            currentMoveSpeed = moveSpeed * (1 - Mathf.Max(Mathf.Max(GetRaycastHit().normal.x, Mathf.Abs(GetRaycastHit().normal.x - 0.3f))));
-            Debug.Log(currentMoveSpeed);
+            rigidbody.MovePosition(transform.position + transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * currentMoveSpeed);
         }
+    }
 
-        rigidbody.MovePosition(transform.position + transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * currentMoveSpeed);
+    private void Rotate()
+    {
         transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed, 0);
     }
 
     private void Jump()
     {
-        rigidbody.AddForce(0, jumpPower, 0, ForceMode.Impulse);
+        rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
     }
 
     private bool IsGrounded()
     {
-        return GetRaycastHit().distance < 0.71;
+        return GetRaycastHit(-Vector3.up).distance < 0.71;
     }
 
-    private bool IsSlope()
+    private bool IsSlope(Vector3 direction)
     {
-        return GetRaycastHit().distance < 2 && (GetRaycastHit().normal.x >= 0.6f || GetRaycastHit().normal.x <= -0.3f);
+        return GetRaycastHit(direction).distance < 1 &&
+            (Mathf.Abs(GetRaycastHit(direction).normal.x) > 0.8f || Mathf.Abs(GetRaycastHit(direction).normal.z) > 0.8f);
     }
 
-    private RaycastHit GetRaycastHit()
+    private RaycastHit GetRaycastHit(Vector3 direction)
     {
         RaycastHit hit = new RaycastHit();
-        Physics.Raycast(baseOrb.position, -Vector3.up, out hit);
+        Physics.Raycast(baseOrb.position, direction, out hit);
         return hit;
     }
 }
