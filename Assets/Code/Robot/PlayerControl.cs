@@ -8,23 +8,23 @@ public class PlayerControl : MonoBehaviour
     public Transform baseOrb;
 
     private new Rigidbody rigidbody;
+    private Animator animator;
     private float groundHeight;
 
     private void Start()
     {
         rigidbody = this.GetComponent<Rigidbody>();
+        animator = this.GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
     {
         Move();
+        animator.SetBool("isGrounded", IsGrounded());
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            if (IsGrounded())
-            {
-                rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            }
+            rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
     }
 
@@ -43,7 +43,6 @@ public class PlayerControl : MonoBehaviour
     {
         RaycastHit hit = new RaycastHit();
         Physics.Raycast(baseOrb.position, -Vector3.up, out hit);
-        Debug.Log(hit.distance);
         return hit.distance < 0.71;
     }
 }
