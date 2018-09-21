@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class FireController : MonoBehaviour
 {
-
-    private float waterRequiredToExtinguish;
+    public float waterRequiredToExtinguish;
     private Color burntBush = new Color(0.52f, 0.52f, 0.52f);
-    private Color normalBush = new Color(0, 0, 0);
+    private Color normalBush = new Color(1, 1, 1);
 
     void Start()
     {
         this.GetComponentInParent<MeshRenderer>().materials[0].color = burntBush;
-
         waterRequiredToExtinguish = Random.Range(0.5f, 1.5f);
     }
 

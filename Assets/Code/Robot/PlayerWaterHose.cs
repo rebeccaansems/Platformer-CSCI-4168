@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerWaterHose : MonoBehaviour
 {
+    public PlayerCharacter player;
     public Camera playerCamera;
     public ParticleFollowPath[] allParticlePaths;
 
     private bool canBeStopped;
+    private IEnumerator fireToBePutOut;
 
     private void Awake()
     {
@@ -19,12 +21,13 @@ public class PlayerWaterHose : MonoBehaviour
 
     private void Start()
     {
+        player = GetComponent<PlayerCharacter>();
         allParticlePaths = GetComponentsInChildren<ParticleFollowPath>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && player.GetPowerpackLevel() > 0)
         {
             if (allParticlePaths[0].isPlaying == false)
             {
@@ -33,6 +36,8 @@ public class PlayerWaterHose : MonoBehaviour
         }
         else if (allParticlePaths[0].isPlaying && canBeStopped)
         {
+            StopCoroutine(fireToBePutOut);
+
             foreach (ParticleFollowPath particlePath in allParticlePaths)
             {
                 particlePath.Stop(particlePath.transform.parent.gameObject.name);
@@ -64,5 +69,27 @@ public class PlayerWaterHose : MonoBehaviour
             yield return new WaitForSeconds(time / allParticlePaths.Length);
         }
         canBeStopped = true;
+    }
+
+    public void StartPuttingoutFire(FireController fire)
+    {
+        if (player.GetPowerpackLevel() > 0)
+        {
+            fireToBePutOut = PutOutFire(fire);
+            StartCoroutine(fireToBePutOut);
+        }
+    }
+
+    IEnumerator PutOutFire(FireController fire)
+    {
+        while (true)
+        {
+            if (player.GetPowerpackLevel() > 0)
+            {
+                fire.waterRequiredToExtinguish -= 0.05f;
+                player.UsePowerpack();
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 }
