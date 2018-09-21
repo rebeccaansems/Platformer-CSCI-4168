@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+    public List<string> collisionTags;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionEnter(Collision collide)
+    {
+        if (collisionTags.Contains(collide.gameObject.tag))
+        {
+            Debug.Log("COLLECT");
+            Destroy(collide.gameObject);
+        }
+    }
 }
