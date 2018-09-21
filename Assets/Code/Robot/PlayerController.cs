@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public List<string> collisionTags;
-
     private void OnCollisionEnter(Collision collide)
     {
-        if (collisionTags.Contains(collide.gameObject.tag))
+        //if player collides with a powerpack, gain the pack and destroy it's game object
+        if (collide.gameObject.tag == "Powerpack")
         {
             this.GetComponent<PlayerCharacter>().PowerpackGained();
             Destroy(collide.gameObject);
