@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collisionTags.Contains(collide.gameObject.tag))
         {
-            Debug.Log("COLLECT");
+            this.GetComponent<PlayerCharacter>().PowerpackGained();
             Destroy(collide.gameObject);
         }
     }
