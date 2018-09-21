@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 
     private new Rigidbody rigidbody;
     private Animator animator;
-    private float groundHeight, currentMoveSpeed;
+    private float groundHeight;
 
     private void Start()
     {
@@ -31,11 +31,9 @@ public class PlayerControl : MonoBehaviour
 
     private void Move()
     {
-        currentMoveSpeed = moveSpeed;
-
         if (IsSlope(transform.forward * Input.GetAxis("Vertical")) == false)
         {
-            rigidbody.MovePosition(transform.position + transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * currentMoveSpeed);
+            rigidbody.MovePosition(transform.position + transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed);
         }
     }
 
