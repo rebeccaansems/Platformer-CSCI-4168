@@ -59,7 +59,7 @@ public class PlayerWaterHose : MonoBehaviour
         canBeStopped = false;
         foreach (ParticleFollowPath particlePath in allParticlePaths)
         {
-            particlePath.transform.position = this.transform.position;
+            particlePath.transform.position = this.transform.position + Vector3.up;
             particlePath.Play(particlePath.transform.parent.gameObject.name, time);
             yield return new WaitForSeconds(time / allParticlePaths.Length);
         }
