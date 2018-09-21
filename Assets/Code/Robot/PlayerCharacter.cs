@@ -36,7 +36,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (currentPowerpackLevel > 0)
         {
-            currentPowerpackLevel -= 0.1f;
+            currentPowerpackLevel -= 0.01f;
         }
 
         if (currentPowerpackLevel <= 0 && numberOfPowerpacks > 0)
