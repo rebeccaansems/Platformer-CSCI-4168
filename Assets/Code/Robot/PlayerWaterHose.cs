@@ -8,7 +8,7 @@ public class PlayerWaterHose : MonoBehaviour
     public Camera playerCamera;
     public ParticleFollowPath[] allParticlePaths;
 
-    private bool canBeStopped;
+    private bool canBeStopped, fireExists;
     private IEnumerator fireToBePutOut;
 
     private void Awake()
@@ -27,7 +27,7 @@ public class PlayerWaterHose : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && player.GetPowerpackLevel() > 0)
+        if (Input.GetMouseButton(0) && player.GetPowerpackLevel() > 0 && fireExists)
         {
             if (allParticlePaths[0].isPlaying == false)
             {
@@ -37,6 +37,7 @@ public class PlayerWaterHose : MonoBehaviour
         else if (allParticlePaths[0].isPlaying && canBeStopped)
         {
             StopCoroutine(fireToBePutOut);
+            fireExists = false;
 
             foreach (ParticleFollowPath particlePath in allParticlePaths)
             {
@@ -75,6 +76,8 @@ public class PlayerWaterHose : MonoBehaviour
     {
         if (player.GetPowerpackLevel() > 0)
         {
+            Debug.Log("!");
+            fireExists = true;
             fireToBePutOut = PutOutFire(fire);
             StartCoroutine(fireToBePutOut);
         }
@@ -90,10 +93,6 @@ public class PlayerWaterHose : MonoBehaviour
                 {
                     fire.waterRequiredToExtinguish -= 0.05f;
                 }
-                player.UsePowerpack();
-                player.UsePowerpack();
-                player.UsePowerpack();
-                player.UsePowerpack();
                 player.UsePowerpack();
             }
             yield return new WaitForSeconds(0.3f);
