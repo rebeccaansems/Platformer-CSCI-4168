@@ -39,10 +39,10 @@ public class PlayerCharacter : MonoBehaviour
             currentPowerpackLevel -= 0.1f;
         }
 
-        if (currentPowerpackLevel == 0)
+        if (currentPowerpackLevel <= 0 && numberOfPowerpacks > 0)
         {
-            PowerpackEmptied();
             numberOfPowerpacks--;
+            PowerpackEmptied();
         }
     }
 
@@ -58,4 +58,5 @@ public class PlayerCharacter : MonoBehaviour
     {
         return currentPowerpackLevel;
     }
+
 }
