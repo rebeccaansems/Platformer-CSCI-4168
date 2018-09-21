@@ -12,6 +12,8 @@ public class FireController : MonoBehaviour
     void Start()
     {
         this.GetComponentInParent<MeshRenderer>().materials[0].color = burntBush;
+
+        waterRequiredToExtinguish = Random.Range(0.5f, 1.5f);
     }
 
     private void Update()
