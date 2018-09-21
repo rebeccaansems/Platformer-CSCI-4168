@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerWaterHose : MonoBehaviour
 {
+    public Camera playerCamera;
+
     ParticleFollowPath[] allParticlePaths;
 
     private bool canBeStopped;
@@ -30,6 +32,11 @@ public class PlayerWaterHose : MonoBehaviour
             {
                 StartCoroutine(PlayParticleSystem(2f));
             }
+
+            foreach (ParticleFollowPath particlePath in allParticlePaths)
+            {
+                particlePath.GetComponentInParent<iTweenPath>().nodes[0] = this.transform.position;
+            }
         }
         else if (allParticlePaths[0].isPlaying && canBeStopped)
         {
@@ -37,6 +44,14 @@ public class PlayerWaterHose : MonoBehaviour
             {
                 particlePath.Stop(particlePath.transform.parent.gameObject.name);
             }
+        }
+    }
+
+    public void SetFinalPoint(Vector3 point)
+    {
+        foreach (ParticleFollowPath particlePath in allParticlePaths)
+        {
+            particlePath.GetComponentInParent<iTweenPath>().nodes[2] = point;
         }
     }
 
