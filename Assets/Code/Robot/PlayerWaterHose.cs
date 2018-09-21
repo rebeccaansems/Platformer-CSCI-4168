@@ -76,7 +76,6 @@ public class PlayerWaterHose : MonoBehaviour
     {
         if (player.GetPowerpackLevel() > 0)
         {
-            Debug.Log("!");
             fireExists = true;
             fireToBePutOut = PutOutFire(fire);
             StartCoroutine(fireToBePutOut);
@@ -91,7 +90,7 @@ public class PlayerWaterHose : MonoBehaviour
             {
                 if (fire != null)
                 {
-                    fire.waterRequiredToExtinguish -= 0.05f;
+                    fire.waterRequiredToExtinguish -= 0.1f;
                 }
                 player.UsePowerpack();
             }

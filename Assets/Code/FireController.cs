@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireController : MonoBehaviour
 {
     public float waterRequiredToExtinguish;
-    private Color burntBush = new Color(0.52f, 0.52f, 0.52f);
+    private Color burntBush = new Color(0.42f, 0.42f, 0.42f);
     private Color normalBush = new Color(1, 1, 1);
 
     void Start()
