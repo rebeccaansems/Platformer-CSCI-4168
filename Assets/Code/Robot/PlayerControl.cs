@@ -9,19 +9,24 @@ public class PlayerControl : MonoBehaviour
 
     private new Rigidbody rigidbody;
     private Animator animator;
+    private PlayerWaterHose waterHose;
     private float groundHeight;
 
     private void Start()
     {
         rigidbody = this.GetComponent<Rigidbody>();
         animator = this.GetComponentInChildren<Animator>();
+        waterHose = this.GetComponentInChildren<PlayerWaterHose>();
     }
 
     private void FixedUpdate()
     {
-        Move();
-        Rotate();
-        animator.SetBool("isGrounded", IsGrounded());
+        if (waterHose.allParticlePaths[0].isPlaying == false)
+        {
+            Move();
+            Rotate();
+            animator.SetBool("isGrounded", IsGrounded());
+        }
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {

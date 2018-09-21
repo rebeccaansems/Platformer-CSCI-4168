@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerWaterHose : MonoBehaviour
 {
     public Camera playerCamera;
-
-    ParticleFollowPath[] allParticlePaths;
+    public ParticleFollowPath[] allParticlePaths;
 
     private bool canBeStopped;
 
@@ -25,17 +24,11 @@ public class PlayerWaterHose : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetMouseButton(0))
         {
-            if(allParticlePaths[0].isPlaying == false)
+            if (allParticlePaths[0].isPlaying == false)
             {
                 StartCoroutine(PlayParticleSystem(2f));
-            }
-
-            foreach (ParticleFollowPath particlePath in allParticlePaths)
-            {
-                particlePath.GetComponentInParent<iTweenPath>().nodes[0] = this.transform.position;
             }
         }
         else if (allParticlePaths[0].isPlaying && canBeStopped)
@@ -51,6 +44,12 @@ public class PlayerWaterHose : MonoBehaviour
     {
         foreach (ParticleFollowPath particlePath in allParticlePaths)
         {
+            Vector3 midPoint = (this.transform.position + point) / 2;
+            midPoint.y += Vector3.Distance(this.transform.position, point) / 5;
+            midPoint.z += Vector3.Distance(this.transform.position, point) / 10;
+
+            particlePath.GetComponentInParent<iTweenPath>().nodes[0] = this.transform.position + Vector3.up;
+            particlePath.GetComponentInParent<iTweenPath>().nodes[1] = midPoint;
             particlePath.GetComponentInParent<iTweenPath>().nodes[2] = point;
         }
     }
@@ -60,6 +59,7 @@ public class PlayerWaterHose : MonoBehaviour
         canBeStopped = false;
         foreach (ParticleFollowPath particlePath in allParticlePaths)
         {
+            particlePath.transform.position = this.transform.position;
             particlePath.Play(particlePath.transform.parent.gameObject.name, time);
             yield return new WaitForSeconds(time / allParticlePaths.Length);
         }
