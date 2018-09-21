@@ -17,26 +17,14 @@ public class ParticleFollowPath : MonoBehaviour
     {
         this.GetComponent<ParticleSystem>().Play();
         isPlaying = true;
-        particleCorountine = PlayParticleSystem(pathName, time);
-        StartCoroutine(particleCorountine);
-    }
-
-    public void PlayOnce(string pathName, float time)
-    {
-        this.GetComponent<ParticleSystem>().Play();
-        iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath(pathName), "easetype", iTween.EaseType.easeOutQuint, "time", time));
-        this.GetComponent<ParticleSystem>().Stop();
-    }
-
-    public void Stop()
-    {
-        //this.GetComponent<ParticleSystem>().Stop();
-        //isPlaying = false;
-    }
-
-    IEnumerator PlayParticleSystem(string pathName, float time)
-    {
         iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath(pathName), "easetype", iTween.EaseType.easeOutSine, "time", time, "looptype", iTween.LoopType.loop));
-        yield return new WaitForSeconds(0.1f);
+    }
+
+    public void Stop(string pathName)
+    {
+        iTween.Stop();
+        iTween.MoveFrom(gameObject, iTween.Hash("path", iTweenPath.GetPath(pathName), "time", 0));
+        this.GetComponent<ParticleSystem>().Stop();
+        isPlaying = false;
     }
 }
