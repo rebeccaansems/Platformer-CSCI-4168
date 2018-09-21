@@ -84,9 +84,16 @@ public class PlayerWaterHose : MonoBehaviour
     {
         while (true)
         {
-            if (player.GetPowerpackLevel() > 0)
+            if (player.GetPowerpackLevel() > 0 || player.GetNumberPowerpacks() > 0)
             {
-                fire.waterRequiredToExtinguish -= 0.05f;
+                if (fire != null)
+                {
+                    fire.waterRequiredToExtinguish -= 0.05f;
+                }
+                player.UsePowerpack();
+                player.UsePowerpack();
+                player.UsePowerpack();
+                player.UsePowerpack();
                 player.UsePowerpack();
             }
             yield return new WaitForSeconds(0.3f);
