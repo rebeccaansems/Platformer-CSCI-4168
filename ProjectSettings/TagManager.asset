@@ -7,6 +7,7 @@ TagManager:
   - Fly
   - Water
   - Powerpack
+  - Bush
   layers:
   - Default
   - TransparentFX

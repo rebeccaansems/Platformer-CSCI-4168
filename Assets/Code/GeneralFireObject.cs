@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralObject : MonoBehaviour
+public class GeneralFireObject : MonoBehaviour
 {
     private GameObject player;
     private FireController fire;
