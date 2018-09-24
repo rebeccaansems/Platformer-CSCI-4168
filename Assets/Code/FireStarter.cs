@@ -12,6 +12,7 @@ public class FireStarter : MonoBehaviour {
     private List<GameObject> allBushes;
     
 	void Awake () {
+        //get all bushes
         allBushes = GameObject.FindGameObjectsWithTag("Bush").ToList();
 
         //sort bushes randomly
@@ -25,7 +26,12 @@ public class FireStarter : MonoBehaviour {
             Instantiate(fire, allBushes[i].transform);
             allBushes[i].AddComponent<GeneralFireObject>();
             allBushes[i].transform.parent = this.transform;
+
+            //add bush to list of all fire bushes
             fireBushes.Add(allBushes[i]);
+
+            //set this as the fire starter
+            allBushes[i].GetComponentInChildren<FireController>().fireStarter = this;
         }
     }
 }
