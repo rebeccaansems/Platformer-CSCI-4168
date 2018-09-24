@@ -7,90 +7,51 @@ public class PlayerWaterHose : MonoBehaviour
     public PlayerCharacter player;
     public Camera playerCamera;
     public ParticleFollowPath[] allParticlePaths;
+    public GameObject waterhoseElement;
 
-    private bool canBeStopped, fireExists;
+    public bool isPlaying, canMove;
     private IEnumerator fireToBePutOut;
-
-    private void Awake()
-    {
-        foreach (iTweenPath path in GetComponentsInChildren<iTweenPath>())
-        {
-            path.pathName = path.gameObject.name;
-        }
-    }
-
-    private void Start()
-    {
-        player = GetComponent<PlayerCharacter>();
-        allParticlePaths = GetComponentsInChildren<ParticleFollowPath>();
-    }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && player.GetPowerpackLevel() > 0 && fireExists)
+        if (Input.GetMouseButtonUp(0) && isPlaying)
         {
-            if (allParticlePaths[0].isPlaying == false)
-            {
-                StartCoroutine(PlayParticleSystem(2f));
-            }
-        }
-        else if (allParticlePaths[0].isPlaying && canBeStopped)
-        {
-            StopCoroutine(fireToBePutOut);
-            fireExists = false;
-
-            foreach (ParticleFollowPath particlePath in allParticlePaths)
-            {
-                particlePath.Stop(particlePath.transform.parent.gameObject.name);
-            }
+            transform.DetachChildren();
+            isPlaying = false;
         }
     }
 
-    public void SetFinalPoint(Vector3 point)
+    IEnumerator StartWaterhose(Vector3 endLocation)
     {
-        foreach (ParticleFollowPath particlePath in allParticlePaths)
+        while ((player.GetPowerpackLevel() > 0 || player.GetNumberPowerpacks() > 0) && isPlaying)
         {
-            Vector3 midPoint = (this.transform.position + point) / 2;
-            midPoint.y += Vector3.Distance(this.transform.position, point) / 5;
-            midPoint.z += Vector3.Distance(this.transform.position, point) / 10;
-
-            particlePath.GetComponentInParent<iTweenPath>().nodes[0] = this.transform.position + Vector3.up;
-            particlePath.GetComponentInParent<iTweenPath>().nodes[1] = midPoint;
-            particlePath.GetComponentInParent<iTweenPath>().nodes[2] = point;
+            GameObject waterElement = Instantiate(waterhoseElement, this.transform, false);
+            waterElement.GetComponent<ParticleFollowPath>().StartPathFollow(endLocation);
+            yield return new WaitForEndOfFrame();
         }
-    }
-
-    IEnumerator PlayParticleSystem(float time)
-    {
-        canBeStopped = false;
-        foreach (ParticleFollowPath particlePath in allParticlePaths)
-        {
-            particlePath.transform.position = this.transform.position + Vector3.up;
-            particlePath.Play(particlePath.transform.parent.gameObject.name, time);
-            yield return new WaitForSeconds(time / allParticlePaths.Length);
-        }
-        canBeStopped = true;
     }
 
     public void StartPuttingoutFire(FireController fire)
     {
-        if (player.GetPowerpackLevel() > 0)
+        if (player.GetPowerpackLevel() > 0 && fire != null)
         {
-            fireExists = true;
+            canMove = false;
+            isPlaying = true;
             fireToBePutOut = PutOutFire(fire);
             StartCoroutine(fireToBePutOut);
+            StartCoroutine(StartWaterhose(fire.gameObject.transform.position + (Vector3.up / 2)));
         }
     }
 
     IEnumerator PutOutFire(FireController fire)
     {
-        while (true)
+        while (isPlaying)
         {
             if (player.GetPowerpackLevel() > 0 || player.GetNumberPowerpacks() > 0)
             {
                 if (fire != null)
                 {
-                    fire.waterRequiredToExtinguish -= 0.1f;
+                    fire.waterRequiredToExtinguish -= 0.05f;
                 }
                 player.UsePowerpack();
             }

@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class ParticleFollowPath : MonoBehaviour
 {
-    public bool isPlaying;
-
-    private IEnumerator particleCorountine;
-
-    private void Start()
-    {
-        this.GetComponent<ParticleSystem>().Stop();
-    }
-
-    public void Play(string pathName, float time)
+    public void StartPathFollow(Vector3 endLocation)
     {
         this.GetComponent<ParticleSystem>().Play();
-        isPlaying = true;
-        iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath(pathName), "easetype", iTween.EaseType.easeOutSine, "time", time, "looptype", iTween.LoopType.loop));
+        StartCoroutine(FollowPath(endLocation));
     }
 
-    public void Stop(string pathName)
+    private IEnumerator FollowPath(Vector3 endLocation)
     {
-        iTween.Stop();
-        iTween.MoveFrom(gameObject, iTween.Hash("path", iTweenPath.GetPath(pathName), "time", 0));
-        this.GetComponent<ParticleSystem>().Stop();
-        isPlaying = false;
+        while (Vector3.Distance(this.transform.position, endLocation) > 0.1f)
+        {
+            this.transform.position = Vector3.Lerp(this.transform.position, endLocation, 0.1f);
+            yield return new WaitForEndOfFrame();
+        }
+        Destroy(this.gameObject);
     }
 }

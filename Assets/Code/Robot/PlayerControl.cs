@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (waterHose.allParticlePaths[0].isPlaying == false)
+        if (waterHose.isPlaying == false)
         {
             Move();
             Rotate();

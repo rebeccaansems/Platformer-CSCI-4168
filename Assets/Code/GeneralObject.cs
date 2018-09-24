@@ -17,8 +17,7 @@ public class GeneralObject : MonoBehaviour
     {
         if (Vector3.Distance(this.transform.position, player.transform.position) < 30)
         {
-            player.GetComponent<PlayerWaterHose>().SetFinalPoint(this.transform.GetComponent<Renderer>().bounds.center);
-            player.GetComponent<PlayerWaterHose>().StartPuttingoutFire(fire);
+            player.GetComponentInChildren<PlayerWaterHose>().StartPuttingoutFire(fire);
         }
     }
 }
