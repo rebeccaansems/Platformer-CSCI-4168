@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 4219077106735840}
   - component: {fileID: 20298718563587878}
   - component: {fileID: 81293545414100366}
+  - component: {fileID: 114628817241666158}
   m_Layer: 0
   m_Name: Robot Camera
   m_TagString: Untagged
@@ -958,8 +959,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1983892524124392}
-  m_LocalRotation: {x: -0, y: -0.41539013, z: -0, w: 0.9096434}
-  m_LocalPosition: {x: 2.8314579, y: 3.6, z: 1.681898}
+  m_LocalRotation: {x: -0, y: 0.3971715, z: -0, w: -0.91774446}
+  m_LocalPosition: {x: -2.29, y: 3.98, z: 6.49}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4891395747953974}
@@ -969,7 +970,7 @@ Transform:
   - {fileID: 4445524753487628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -49.088, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 313.197, z: 0}
 --- !u!4 &4718293373821280
 Transform:
   m_ObjectHideFlags: 1
@@ -2589,7 +2590,7 @@ MonoBehaviour:
   waterhoseElement: {fileID: 1859636224628814, guid: c111c972b717d8449b9cf2afd3a8f4cf,
     type: 2}
   isPlaying: 0
-  fireExists: 0
+  canMove: 0
 --- !u!114 &114216166259123238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2613,6 +2614,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142f17004d095fd44bdb06b73919604f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireStart: {fileID: 0}
+--- !u!114 &114628817241666158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347166935931560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 5be6fa6a382768f48af7f3e1edb3c76d, type: 2}
 --- !u!114 &114764641918310374
 MonoBehaviour:
   m_ObjectHideFlags: 1

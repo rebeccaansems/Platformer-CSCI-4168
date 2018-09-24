@@ -59,4 +59,8 @@ public class PlayerCharacter : MonoBehaviour
         return currentPowerpackLevel;
     }
 
+    public void KillPlayer()
+    {
+        Debug.Log("dead");
+    }
 }

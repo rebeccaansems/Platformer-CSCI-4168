@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Powerpack
   - Bush
+  - Fire
   layers:
   - Default
   - TransparentFX

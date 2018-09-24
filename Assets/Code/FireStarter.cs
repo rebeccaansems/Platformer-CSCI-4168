@@ -7,6 +7,7 @@ public class FireStarter : MonoBehaviour {
 
     public Vector2 extremesForNumberOfFires;
     public GameObject fire;
+    public List<GameObject> fireBushes;
 
     private List<GameObject> allBushes;
     
@@ -24,6 +25,7 @@ public class FireStarter : MonoBehaviour {
             Instantiate(fire, allBushes[i].transform);
             allBushes[i].AddComponent<GeneralFireObject>();
             allBushes[i].transform.parent = this.transform;
+            fireBushes.Add(allBushes[i]);
         }
     }
 }

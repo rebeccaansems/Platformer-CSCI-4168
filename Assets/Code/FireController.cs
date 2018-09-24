@@ -39,7 +39,6 @@ public class FireController : MonoBehaviour
             this.GetComponentInParent<MeshRenderer>().materials[0].color = normalBush;
             fireParticles.Stop();
             smokeParticles.Stop();
-            //Destroy(this.gameObject);
         }
     }
 }
