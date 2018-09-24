@@ -63,4 +63,9 @@ public class PlayerCharacter : MonoBehaviour
     {
         Debug.Log("dead");
     }
+
+    public void GameOver()
+    {
+        Debug.Log("gameover");
+    }
 }
