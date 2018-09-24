@@ -5,22 +5,41 @@ using UnityEngine;
 public class FireController : MonoBehaviour
 {
     public float waterRequiredToExtinguish;
+
     private Color burntBush = new Color(0.42f, 0.42f, 0.42f);
     private Color normalBush = new Color(1, 1, 1);
+
+    private float waterRequiredToExtinguishStart;
+    private float fireEmissionsStart, smokeEmissionsStart;
+    private ParticleSystem fireParticles, smokeParticles;
+    private bool hasDecreasedFireSpeeds = false;
 
     void Start()
     {
         this.GetComponentInParent<MeshRenderer>().materials[0].color = burntBush;
         waterRequiredToExtinguish = Random.Range(0.5f, 1.5f);
+        waterRequiredToExtinguishStart = waterRequiredToExtinguish;
+
+        fireParticles = GetComponentsInChildren<ParticleSystem>()[0];
+        smokeParticles = GetComponentsInChildren<ParticleSystem>()[1];
+
+        fireEmissionsStart = fireParticles.emission.rateOverTime.constant;
+        smokeEmissionsStart = smokeParticles.emission.rateOverTime.constant;
     }
 
     private void Update()
     {
+        //decrease fire as waterRequiredToExtinguish gets smaller
+        var emission = fireParticles.emission;
+        emission.rateOverTime = fireEmissionsStart * (waterRequiredToExtinguish / waterRequiredToExtinguishStart);
+
         //once fire is extinguished change bush back to normal color and destroy this and fire/smoke children
         if (waterRequiredToExtinguish <= 0)
         {
             this.GetComponentInParent<MeshRenderer>().materials[0].color = normalBush;
-            Destroy(this.gameObject);
+            fireParticles.Stop();
+            smokeParticles.Stop();
+            //Destroy(this.gameObject);
         }
     }
 }
