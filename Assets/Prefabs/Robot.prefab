@@ -959,8 +959,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1983892524124392}
-  m_LocalRotation: {x: -0, y: 0.3971715, z: -0, w: -0.91774446}
-  m_LocalPosition: {x: -2.29, y: 3.98, z: 6.49}
+  m_LocalRotation: {x: -0, y: 0.18035844, z: -0, w: -0.983601}
+  m_LocalPosition: {x: 11.09, y: 2.68, z: 0.34}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4891395747953974}
@@ -970,7 +970,7 @@ Transform:
   - {fileID: 4445524753487628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 313.197, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 339.219, z: 0}
 --- !u!4 &4718293373821280
 Transform:
   m_ObjectHideFlags: 1
@@ -2602,7 +2602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66760879b6b5ace45b129bd491c8f33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScreen: {fileID: 0}
   animalsCurrentlyFollowing: []
+  isDead: 0
 --- !u!114 &114380206282660778
 MonoBehaviour:
   m_ObjectHideFlags: 1

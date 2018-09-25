@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
 
     private new Rigidbody rigidbody;
     private Animator animator;
+    private PlayerCharacter playerCharacter;
     private PlayerWaterHose waterHose;
     private float groundHeight;
 
@@ -17,28 +18,33 @@ public class PlayerControl : MonoBehaviour
         rigidbody = this.GetComponent<Rigidbody>();
         animator = this.GetComponentInChildren<Animator>();
         waterHose = this.GetComponentInChildren<PlayerWaterHose>();
+        playerCharacter = this.GetComponentInChildren<PlayerCharacter>();
     }
 
     private void FixedUpdate()
     {
-        //if player isn't using the waterhose, allow movement
-        if (waterHose.isPlaying == false)
+        //allow movements only if player is alive
+        if (playerCharacter.isDead == false)
         {
-            Move();
-            Rotate();
-            animator.SetBool("isGrounded", IsGrounded());
-        }
+            //if player isn't using the waterhose, allow movement
+            if (waterHose.isPlaying == false)
+            {
+                Move();
+                Rotate();
+                animator.SetBool("isGrounded", IsGrounded());
+            }
 
-        //if player is on the ground and space is pressed, jump
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+            //if player is on the ground and space is pressed, jump
+            if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
 
-        //kill player if fully underwater (i.e. y is less than -2.5)
-        if (this.transform.position.y < -2.5f)
-        {
-            this.GetComponent<PlayerCharacter>().KillPlayer();
+            //kill player if fully underwater (i.e. y is less than -2.5)
+            if (this.transform.position.y < -2.5f)
+            {
+                this.GetComponent<PlayerCharacter>().KillPlayer();
+            }
         }
     }
 

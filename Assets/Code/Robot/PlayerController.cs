@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         this.GetComponentsInChildren<PostProcessingBehaviour>()[0].profile.vignette.settings = postProcessingSettings;
 
         //kill player if too close to fire
-        if (minDistance < 4)
+        if (minDistance < 2f)
         {
             this.GetComponent<PlayerCharacter>().KillPlayer();
         }

@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 405354}
   - component: {fileID: 3315964}
   - component: {fileID: 2353342}
+  - component: {fileID: 65378033912878600}
   m_Layer: 0
   m_Name: Bottom_Terrain_H_a_01
   m_TagString: Untagged
@@ -83,3 +84,15 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144402}
   m_IsPrefabAsset: 1
+--- !u!65 &65378033912878600
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 400, y: 0, z: 400}
+  m_Center: {x: 200, y: 0, z: 200}
