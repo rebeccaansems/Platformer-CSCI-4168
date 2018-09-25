@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameoverUI : MonoBehaviour {
+public class GameoverUI : MonoBehaviour
+{
+    public CanvasGroup gameoverCanvas;
 
     public void Setup()
     {
-        this.GetComponent<CanvasGroup>().interactable = true;
-        this.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        gameoverCanvas.GetComponent<CanvasGroup>().interactable = true;
+        gameoverCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     public void RestartButtonClicked()

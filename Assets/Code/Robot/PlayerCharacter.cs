@@ -6,6 +6,7 @@ using MalbersAnimations;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    public GameObject uiMenus;
     public CanvasGroup deathScreen, gameoverScreen;
     public List<AnimalAIControl> animalsCurrentlyFollowing;
     public bool isDead;
@@ -78,7 +79,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         FadableUI fade = new FadableUI();
         isDead = true;
-        gameoverScreen.GetComponent<GameoverUI>().Setup();
+        uiMenus.GetComponent<GameoverUI>().Setup();
         StartCoroutine(fade.FadeIn(gameoverScreen));
     }
 
