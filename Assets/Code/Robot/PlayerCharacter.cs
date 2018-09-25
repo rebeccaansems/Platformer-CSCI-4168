@@ -6,7 +6,7 @@ using MalbersAnimations;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    public CanvasGroup deathScreen;
+    public CanvasGroup deathScreen, gameoverScreen;
     public List<AnimalAIControl> animalsCurrentlyFollowing;
     public bool isDead;
 
@@ -76,38 +76,22 @@ public class PlayerCharacter : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("gameover");
+        FadableUI fade = new FadableUI();
+        isDead = true;
+        gameoverScreen.GetComponent<GameoverUI>().Setup();
+        StartCoroutine(fade.FadeIn(gameoverScreen));
     }
 
     //fade black screen in, reset location, fade black screen out, allow movement
     private IEnumerator RestartPlayer()
     {
-        StartCoroutine(FadeIn());
+        FadableUI fade = new FadableUI();
+        StartCoroutine(fade.FadeIn(deathScreen));
         yield return new WaitForSeconds(0.6f);
-        StartCoroutine(FadeOut());
+        StartCoroutine(fade.FadeOut(deathScreen));
         ResetPlayerLocation();
         yield return new WaitForSeconds(0.6f);
         isDead = false;
-    }
-
-    //fade death screen in to total black (end: alpha = 1)
-    private IEnumerator FadeIn()
-    {
-        while (deathScreen.alpha != 1)
-        {
-            deathScreen.alpha += 0.03f;
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    //fade death screen out from total black (end: alpha = 0)
-    private IEnumerator FadeOut()
-    {
-        while (deathScreen.alpha != 0)
-        {
-            deathScreen.alpha -= 0.03f;
-            yield return new WaitForSeconds(0.01f);
-        }
     }
 
     //set player location and rotation to defaults
