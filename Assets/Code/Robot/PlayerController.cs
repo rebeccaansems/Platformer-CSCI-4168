@@ -30,7 +30,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        FireDistanceChanges();
+        if (fireStart.fireBushes.Count > 0)
+        {
+            FireDistanceChanges();
+        }
+        else
+        {
+            Debug.Log("win");
+        }
     }
 
     private void FireDistanceChanges()

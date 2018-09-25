@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FireStarter : MonoBehaviour {
+public class FireStarter : MonoBehaviour
+{
 
     public Vector2 extremesForNumberOfFires;
     public GameObject fire;
     public List<GameObject> fireBushes;
 
     private List<GameObject> allBushes;
-    
-	void Awake () {
+
+    void Awake()
+    {
         //get all bushes
         allBushes = GameObject.FindGameObjectsWithTag("Bush").ToList();
 
@@ -21,7 +23,7 @@ public class FireStarter : MonoBehaviour {
 
         //set random number of random bushes on fire
         int numberFires = Random.Range((int)extremesForNumberOfFires.x, Mathf.Min((int)extremesForNumberOfFires.y, allBushes.Count));
-        for(int i=0; i<numberFires; i++)
+        for (int i = 0; i < numberFires; i++)
         {
             Instantiate(fire, allBushes[i].transform);
             allBushes[i].AddComponent<GeneralFireObject>();

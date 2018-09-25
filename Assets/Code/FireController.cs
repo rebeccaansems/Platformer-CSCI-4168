@@ -13,7 +13,7 @@ public class FireController : MonoBehaviour
     private float waterRequiredToExtinguishStart;
     private float fireEmissionsStart, smokeEmissionsStart;
     private ParticleSystem fireParticles, smokeParticles;
-    private bool hasDecreasedFireSpeeds = false;
+    private bool hasBeenExtinguished = false;
 
     void Start()
     {
@@ -30,18 +30,35 @@ public class FireController : MonoBehaviour
 
     private void Update()
     {
-        //decrease fire as waterRequiredToExtinguish gets smaller
-        var emission = fireParticles.emission;
-        emission.rateOverTime = fireEmissionsStart * (waterRequiredToExtinguish / waterRequiredToExtinguishStart);
-
-        //once fire is extinguished change bush back to normal color and destroy this and fire/smoke children and remove
-        //this from list of all fire bushes
-        if (waterRequiredToExtinguish <= 0)
+        if (hasBeenExtinguished == false)
         {
-            this.GetComponentInParent<MeshRenderer>().materials[0].color = normalBush;
-            fireParticles.Stop();
-            smokeParticles.Stop();
-            fireStarter.fireBushes.Remove(this.transform.parent.gameObject);
+            //decrease fire as waterRequiredToExtinguish gets smaller
+            var emission = fireParticles.emission;
+            emission.rateOverTime = fireEmissionsStart * (waterRequiredToExtinguish / waterRequiredToExtinguishStart);
+
+            //once fire is extinguished change bush back to normal color and destroy this and fire/smoke children and remove
+            //this from list of all fire bushes
+            if (waterRequiredToExtinguish <= 0)
+            {
+                hasBeenExtinguished = true;
+
+                this.GetComponentInParent<MeshRenderer>().materials[0].color = normalBush;
+                fireStarter.fireBushes.Remove(this.transform.parent.gameObject);
+
+                StartCoroutine(CleanUpParticleSystems());
+            }
         }
+    }
+
+    private IEnumerator CleanUpParticleSystems()
+    {
+        //stop particle systems
+        fireParticles.Stop();
+        smokeParticles.Stop();
+
+        yield return new WaitForSeconds(smokeParticles.main.duration);
+
+        //delete self
+        Destroy(this.gameObject);
     }
 }
