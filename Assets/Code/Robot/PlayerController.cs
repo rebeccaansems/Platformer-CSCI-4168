@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("win");
+            this.GetComponent<PlayerCharacter>().WinGame();
         }
     }
 

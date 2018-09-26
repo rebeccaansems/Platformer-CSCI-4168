@@ -79,8 +79,17 @@ public class PlayerCharacter : MonoBehaviour
     {
         FadableUI fade = new FadableUI();
         isDead = true;
-        uiMenus.GetComponent<GameoverUI>().Setup();
+        uiMenus.GetComponent<GameoverUI>().OnGameover();
         StartCoroutine(fade.FadeIn(gameoverScreen));
+    }
+
+    public void WinGame()
+    {
+        if (isDead == false)
+        {
+            isDead = true;
+            uiMenus.GetComponent<WinUI>().OnWin();
+        }
     }
 
     //fade black screen in, reset location, fade black screen out, allow movement

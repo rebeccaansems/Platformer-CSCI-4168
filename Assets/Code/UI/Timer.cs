@@ -10,20 +10,30 @@ public class Timer : MonoBehaviour
     public Text timerText; 
 
     private float timeLeft;
+    private bool timerRunning;
 
     private void Start()
     {
+        timerRunning = true;
         timeLeft = totalTime;
     }
 
     private void Update()
     {
-        timerText.text = timeLeft.ToString("000");
-        timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
+        if (timerRunning)
         {
-            timeLeft = 0;
-            player.GameOver();
+            timerText.text = timeLeft.ToString("000");
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+                timeLeft = 0;
+                player.GameOver();
+            }
         }
+    }
+
+    public void StopTimer()
+    {
+        timerRunning = false;
     }
 }

@@ -7,7 +7,7 @@ public class GameoverUI : MonoBehaviour
 {
     public CanvasGroup gameoverCanvas;
 
-    public void Setup()
+    public void OnGameover()
     {
         gameoverCanvas.GetComponent<CanvasGroup>().interactable = true;
         gameoverCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
