@@ -77,10 +77,8 @@ public class PlayerCharacter : MonoBehaviour
 
     public void GameOver()
     {
-        FadableUI fade = new FadableUI();
         isDead = true;
         uiMenus.GetComponent<GameoverUI>().OnGameover();
-        StartCoroutine(fade.FadeIn(gameoverScreen));
     }
 
     public void WinGame()

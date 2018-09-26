@@ -7,10 +7,20 @@ public class GameoverUI : MonoBehaviour
 {
     public CanvasGroup gameoverCanvas;
 
+    private void Start()
+    {
+        gameoverCanvas.alpha = 0;
+        gameoverCanvas.interactable = false;
+        gameoverCanvas.blocksRaycasts = false;
+    }
+
     public void OnGameover()
     {
-        gameoverCanvas.GetComponent<CanvasGroup>().interactable = true;
-        gameoverCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        this.GetComponent<Timer>().StopTimer();
+        gameoverCanvas.interactable = true;
+        gameoverCanvas.blocksRaycasts = true;
+
+        gameoverCanvas.GetComponent<Animator>().SetBool("animateIn", true);
     }
 
     public void RestartButtonClicked()
