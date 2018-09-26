@@ -34,7 +34,7 @@ public class PlayerCharacter : MonoBehaviour
         //if this is the only powerpack, fill level to 1
         if (numberOfPowerpacks == 1)
         {
-            currentPowerpackLevel = 1;
+            UsePowerpack();
         }
     }
 
