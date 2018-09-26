@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 4449593183578342}
   - component: {fileID: 136286684443176486}
   - component: {fileID: 95039605670021290}
+  - component: {fileID: 114607248902569888}
   m_Layer: 0
   m_Name: Powerpack
   m_TagString: Powerpack
@@ -733,6 +734,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114607248902569888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687650673517204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb857d82278d2e48b88934b14d97c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followDistance: 3
+  speed: 2
 --- !u!136 &136286684443176486
 CapsuleCollider:
   m_ObjectHideFlags: 1
