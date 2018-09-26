@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  totalTime: 40
+  totalTime: 120
   timerText: {fileID: 0}
 --- !u!114 &114142341401163008
 MonoBehaviour:

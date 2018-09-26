@@ -45,17 +45,21 @@ public class FireController : MonoBehaviour
                 this.GetComponentInParent<MeshRenderer>().materials[0].color = normalBush;
                 fireStarter.fireBushes.Remove(this.transform.parent.gameObject);
 
-                StartCoroutine(CleanUpParticleSystems());
+                StartCoroutine(CleanUp());
             }
         }
     }
 
-    private IEnumerator CleanUpParticleSystems()
+    private IEnumerator CleanUp()
     {
+        //destroy the minimap icon
+        Destroy(this.transform.GetComponentInChildren<SpriteRenderer>().gameObject);
+
         //stop particle systems
         fireParticles.Stop();
         smokeParticles.Stop();
 
+        //wait for smoke to finish
         yield return new WaitForSeconds(smokeParticles.main.duration);
 
         //delete self

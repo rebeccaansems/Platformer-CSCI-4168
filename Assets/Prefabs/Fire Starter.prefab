@@ -51,5 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbe4be480a7a924bb31d0e0aa21422d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extremesForNumberOfFires: {x: 6, y: 10}
+  numFires: 8
   fire: {fileID: 1787019690526246, guid: 55a8ab1d92bdcc04f877cbc199c218fb, type: 2}
+  fireBushes: []

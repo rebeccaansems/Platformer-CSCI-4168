@@ -22,7 +22,7 @@ public class PowerpackUI : MonoBehaviour
     {
         if (prevNumPowerpacks != player.GetNumberPowerpacks())
         {
-            powerpackNumberText.text = Mathf.Max((player.GetNumberPowerpacks() - 1), 0).ToString("00");
+            powerpackNumberText.text = player.GetNumberPowerpacks().ToString("00");
             prevNumPowerpacks = player.GetNumberPowerpacks();
         }
 
