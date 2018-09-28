@@ -1,14 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using MalbersAnimations;
 
 public class PlayerCharacter : MonoBehaviour
 {
     public GameObject uiMenus;
     public CanvasGroup deathScreen, gameoverScreen;
-    public List<AnimalAIControl> animalsCurrentlyFollowing;
     public bool isDead;
 
     private int numberOfPowerpacks;

@@ -11,7 +11,7 @@ public class FireController : MonoBehaviour
     private Color normalBush = new Color(1, 1, 1);
 
     private float waterRequiredToExtinguishStart;
-    private float fireEmissionsStart, smokeEmissionsStart;
+    private float fireEmissionsStart;
     private ParticleSystem fireParticles, smokeParticles;
     private bool hasBeenExtinguished = false;
 
