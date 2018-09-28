@@ -71,8 +71,8 @@ public class PlayerControl : MonoBehaviour
 
     private bool IsGrounded()
     {
-        //see if player is currently on the ground, i.e. if less than 0.71 units from the ground
-        return GetRaycastHit(-Vector3.up).distance < 0.71;
+        //see if player is currently on the ground, i.e. if less than 0.81 units from the ground
+        return GetRaycastHit(-Vector3.up).distance < 0.81;
     }
 
     private bool IsSlope(Vector3 direction)
