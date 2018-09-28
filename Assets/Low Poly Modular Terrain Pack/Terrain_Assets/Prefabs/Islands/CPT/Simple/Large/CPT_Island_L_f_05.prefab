@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3362612}
   - component: {fileID: 2334834}
   - component: {fileID: 6444298}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CPT_Island_L_f_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
