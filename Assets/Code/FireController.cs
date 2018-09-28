@@ -25,7 +25,6 @@ public class FireController : MonoBehaviour
         smokeParticles = GetComponentsInChildren<ParticleSystem>()[1];
 
         fireEmissionsStart = fireParticles.emission.rateOverTime.constant;
-        smokeEmissionsStart = smokeParticles.emission.rateOverTime.constant;
     }
 
     private void Update()
