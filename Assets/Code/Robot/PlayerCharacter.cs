@@ -29,9 +29,10 @@ public class PlayerCharacter : MonoBehaviour
         numberOfPowerpacks++;
 
         //if this is the only powerpack, fill level to 1
-        if (numberOfPowerpacks == 1)
+        if (numberOfPowerpacks == 1 && currentPowerpackLevel <= 0)
         {
-            UsePowerpack();
+            numberOfPowerpacks--;
+            currentPowerpackLevel = 1;
         }
     }
 
@@ -43,18 +44,19 @@ public class PlayerCharacter : MonoBehaviour
     //use some energy from current powerpack
     public void UsePowerpack()
     {
-        //use some power from current powerpack
-        if (currentPowerpackLevel > 0)
-        {
-            currentPowerpackLevel -= 0.02f;
-        }
-
         //if powerpack is empty but we have full ones, replace empty powerpack with full one
         if (currentPowerpackLevel <= 0 && numberOfPowerpacks > 0)
         {
             numberOfPowerpacks--;
             currentPowerpackLevel = 1;
         }
+        
+        //use some power from current powerpack
+        if (currentPowerpackLevel > 0)
+        {
+            currentPowerpackLevel -= 0.02f;
+        }
+
     }
 
     public float GetPowerpackLevel()
