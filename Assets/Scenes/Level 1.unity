@@ -861,6 +861,11 @@ Prefab:
       propertyPath: m_Name
       value: Fires
       objectReference: {fileID: 0}
+    - target: {fileID: 114905568170124420, guid: b22e99d7f2db3724d814a2b04181566b,
+        type: 2}
+      propertyPath: numFires
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b22e99d7f2db3724d814a2b04181566b, type: 2}
   m_IsPrefabAsset: 0
@@ -8687,6 +8692,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbd93f0e25f1b24faf2aba6454e187f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!225 &1023744892 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 225181978543817518, guid: ae2b219233cdf514795f62979e553372,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319892340}
 --- !u!4 &1024359503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 460050, guid: 977861ee1b3196b4d90b7a1c93598ac8,
@@ -10067,6 +10077,16 @@ Prefab:
       propertyPath: winCanvas
       value: 
       objectReference: {fileID: 131508361}
+    - target: {fileID: 114070868400649628, guid: 16657e489cf43be4db9dd2686915193b,
+        type: 2}
+      propertyPath: nextLevelButton
+      value: 
+      objectReference: {fileID: 1023744892}
+    - target: {fileID: 114070868400649628, guid: 16657e489cf43be4db9dd2686915193b,
+        type: 2}
+      propertyPath: winText
+      value: 
+      objectReference: {fileID: 1427146770}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16657e489cf43be4db9dd2686915193b, type: 2}
   m_IsPrefabAsset: 0
@@ -11953,6 +11973,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56eafbf69525d5c4bac26a692f741535, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1427146770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114484192483680196, guid: ae2b219233cdf514795f62979e553372,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319892340}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &1428481971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 477594, guid: 56eafbf69525d5c4bac26a692f741535,
