@@ -20,12 +20,14 @@ public class PowerpackUI : MonoBehaviour
 
     void Update()
     {
+        //show current number of full powerpacks
         if (prevNumPowerpacks != player.GetNumberPowerpacks())
         {
             powerpackNumberText.text = player.GetNumberPowerpacks().ToString("00");
             prevNumPowerpacks = player.GetNumberPowerpacks();
         }
 
+        //show current level of current powerpack
         if (prevPowerLevel != player.GetPowerpackLevel())
         {
             powerSlider.value = player.GetPowerpackLevel();

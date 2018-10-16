@@ -14,6 +14,7 @@ public class GameoverUI : MonoBehaviour
         gameoverCanvas.blocksRaycasts = false;
     }
 
+    //stop timer and bring in gameover screen
     public void OnGameover()
     {
         this.GetComponent<Timer>().StopTimer();

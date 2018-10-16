@@ -32,8 +32,8 @@ public class WinUI : MonoBehaviour
             nextLevelButton.interactable = true;
         }
 
+        //stop time and make win canvas appear
         this.GetComponent<Timer>().StopTimer();
-        winCanvas.interactable = true;
         winCanvas.blocksRaycasts = true;
 
         winCanvas.GetComponent<Animator>().SetBool("animateIn", true);

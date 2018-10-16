@@ -15,6 +15,7 @@ public class MoveBetweenPoints : MonoBehaviour
         goingToPoint = pointA;
     }
 
+    //bounce between two points
     void FixedUpdate()
     {
         if (Vector3.Distance(goingToPoint, this.transform.position) < 0.1f)
