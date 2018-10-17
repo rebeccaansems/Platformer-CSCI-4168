@@ -23,13 +23,13 @@ public class WinUI : MonoBehaviour
         {
             winText.text = "you win!";
             nextLevelButton.alpha = 0;
-            nextLevelButton.interactable = false;
+            winCanvas.interactable = false;
         }
         else
         {
             winText.text = "level cleared";
             nextLevelButton.alpha = 1;
-            nextLevelButton.interactable = true;
+            winCanvas.interactable = true;
         }
 
         //stop time and make win canvas appear
